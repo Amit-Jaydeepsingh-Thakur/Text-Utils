@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function TextForm() {
+    const [text, setText] = useState('Enter the Text for Analysis');
+
+    const convertToUpperCase = () => {
+        var enteredText = text;
+        setText(enteredText.toUpperCase());
+    }
+
+    const displayText = (event) => {
+        setText(event.target.value);
+    }
+
     return (
-        <div className="mb-3">
-            <label for="exampleFormControlTextarea1" className="form-label">Enter Your Text</label>
-            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+        <>
+            <div className="mb-3">
+                <textarea className="form-control" value={text} onChange={displayText}id="exampleFormControlTextarea1" rows="8"></textarea>
+            </div>
+            <button type="button" className="btn btn-primary" onClick={convertToUpperCase}>Convert to Upper Case</button>
+        </>
     )
 }
 
